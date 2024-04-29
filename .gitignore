@@ -160,6 +160,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-bart_abs_title
-bart_large_abs_title
-arxiv-tokenized.hf
+bart_abs_title/
+bart_large_abs_title/
+arxiv-tokenized.hf/
