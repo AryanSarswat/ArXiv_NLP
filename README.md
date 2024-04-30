@@ -8,6 +8,16 @@ To First Download the dataset run
 bash download_dataset.sh
 ```
 
+[RNN]
+
+Navigate to the respective Jupyeter Notebooks in the baselineRNN folders.
+
+```
+python3 baselineRNN/abstract_to_title_vanilla_rnn.py
+```
+
+[BART]
+
 After which you can train using:
 
 ```python
