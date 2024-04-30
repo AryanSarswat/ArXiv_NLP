@@ -30,5 +30,5 @@ Or Test trained model using your own custom abstracts:
 python3 test_bart.py
 ```
 
-To try the above please navigate to test_bart.py and enter you abstract into the abstracts list.
+To try the above please navigate to test_bart.py and enter your abstract into the abstracts list.
 
