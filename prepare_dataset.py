@@ -1,5 +1,6 @@
 from datasets import load_dataset
 from transformers import AutoTokenizer
+import numpy as np
 
 MODEL_CHECKPOINT = "facebook/bart-base"
 tokenizer = AutoTokenizer.from_pretrained(MODEL_CHECKPOINT)
@@ -11,8 +12,15 @@ def preprocess_function(examples):
     return model_inputs
 
 def main():
+    SUBSAMPLE = True
+    ratio = 0.1
+
     dataset = load_dataset("json", data_files="./arxiv-metadata-oai-snapshot.json", split="train")
     print(dataset)
+    num_samples = len(dataset)
+
+    if SUBSAMPLE:
+        dataset = dataset.select(np.random.randint(0, num_samples, size=int(ratio * num_samples)))
     
     tokenized_datasets = dataset.map(preprocess_function, batched=True)
     tokenized_datasets = tokenized_datasets.remove_columns(dataset.column_names)

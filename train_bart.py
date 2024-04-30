@@ -1,4 +1,4 @@
- import torch
+import torch
 from torch.optim import AdamW
 from torch.optim import AdamW
 import numpy as np
@@ -15,8 +15,8 @@ import nltk
 
 os.environ["WANDB_PROJECT"] = "AbstractToTitle"  # name your W&B project
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
-MODEL_CHECKPOINT = "facebook/bart-large"
-OUTPUT_DIR = "./bart_large_abs_title"
+MODEL_CHECKPOINT = "facebook/bart-base"
+OUTPUT_DIR = "./bart_abs_title"
 SUBSAMPLE = True
 WANDB = False
 nltk.download('punkt')
@@ -38,7 +38,7 @@ def main():
     # Load Dataset
     ds = load_from_disk("arxiv-tokenized.hf")
     num_samples = len(ds)
-    ratio = 0.1
+    ratio = 0.01
     
     # # Select Random Subset
     if SUBSAMPLE:
@@ -67,7 +67,7 @@ def main():
     
     model, optimizer, train_dataloader, eval_dataloader = accelerator.prepare(model, optimizer, train_dataloader, eval_dataloader)
     
-    num_train_epochs = 2
+    num_train_epochs = 1
     num_update_steps_per_epoch = len(train_dataloader)
     num_training_steps = num_train_epochs * num_update_steps_per_epoch
 
