@@ -18,7 +18,7 @@ os.environ["CUDA_VISIBLE_DEVICES"]="0"
 MODEL_CHECKPOINT = "facebook/bart-large"
 OUTPUT_DIR = "./bart_large_abs_title"
 SUBSAMPLE = True
-WANDB = True
+WANDB = False
 nltk.download('punkt')
 torch.backends.cudnn.benchmark = True
 
@@ -38,7 +38,7 @@ def main():
     # Load Dataset
     ds = load_from_disk("arxiv-tokenized.hf")
     num_samples = len(ds)
-    ratio = 0.8
+    ratio = 0.1
     
     # # Select Random Subset
     if SUBSAMPLE:
